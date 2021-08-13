@@ -6,7 +6,6 @@ import pandas as pd
 
 # Emails & password
 email = "demo@email.com"
-test_email = "demo_test@email.com"
 password = "##########"
 
 # Create a dictionary from birthdays.csv
@@ -17,6 +16,7 @@ birthday_dict = df_birthdays.to_dict(orient="records")
 today = dt.datetime.today()
 for name in range(len(birthday_dict)):
     if today.month == birthday_dict[name]["month"] and today.day == birthday_dict[name]["day"]:
+        receiver = birthday_dict[name]["email"]
 
         # Choose a random letter from letter_templates directory
         letter_template = random.choice(os.listdir("letter_templates"))
@@ -28,5 +28,5 @@ for name in range(len(birthday_dict)):
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
             connection.login(user=email, password=password)
-            connection.sendmail(from_addr=email, to_addrs=test_email, msg=f"subject: HAPPY BIRTHDAY!!!\n\n"
-                                                                          f"{letter}")
+            connection.sendmail(from_addr=email, to_addrs=receiver, msg=f"subject: HAPPY BIRTHDAY!!!\n\n"
+                                                                        f"{letter}")
