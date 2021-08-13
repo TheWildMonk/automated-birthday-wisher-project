@@ -6,9 +6,9 @@ import smtplib
 import pandas as pd
 
 # Emails & password
-email = "thewildmonk.python@gmail.com"
-test_email = "thewildmonk@yahoo.com"
-password = "Abcd1234()"
+email = "demo@email.com"
+test_email = "demo_test@email.com"
+password = "##########"
 
 # Create a dictionary from birthdays.csv
 df_birthdays = pd.read_csv("birthdays.csv")
